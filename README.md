@@ -14,3 +14,12 @@
 - PIL
 - configparser
 - requests
+
+## 目录结构
+
+- `app/` Flask APP
+    - `crawlers/`
+    - `main/`
+- `xk_crawlers/` 爬虫本体
+    - `crawler.py` 爬虫业务逻辑，页面分析，数据收集等
+    - `utils.py` 爬虫功能支持，Session、Cookies、验证码等

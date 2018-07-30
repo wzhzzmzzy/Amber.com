@@ -108,3 +108,8 @@ venv.bak/
 .png
 cookies/
 .DS_Store
+.csv
+
+# PyCharm
+.idea/
+.idea/workspace.xml
