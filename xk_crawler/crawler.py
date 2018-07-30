@@ -1,10 +1,10 @@
 """
-xk.suda.edu.cn 模拟登陆
+xk.suda.edu.cn 数据获取
 """
 from bs4 import BeautifulSoup
 
 
-def get_grade_table(session, user, year='', term='', save=False):
+def get_grade_table(session, user, year='', term='', csv_path=None):
     """
     获取成绩单
     :param session: 带有 Cookie 的 Session 对象
@@ -14,8 +14,8 @@ def get_grade_table(session, user, year='', term='', save=False):
     :param save: 是否保存到 ./grade.csv
     :return: (表头，表内容)
     """
-    from utils import get_referer, save_to_csv
-    from utils import headers
+    from xk_crawler.utils import get_referer, save_to_csv
+    from xk_crawler.utils import headers
 
     cj_headers = headers.copy()
     cj_headers['Referer'] = get_referer(user, 'cj')
@@ -35,8 +35,8 @@ def get_grade_table(session, user, year='', term='', save=False):
     bsObj = BeautifulSoup(res.text, "lxml")
     grade = bsObj.find("table", class_="datelist").find_all("tr")
     table = [[i.text for i in item.find_all("td")] for item in grade]
-    if save:
-        save_to_csv('grade.csv', table[0], table[1:])
+    if csv_path is not None:
+        save_to_csv(csv_path, table[0], table[1:])
     return table[0], table[1:]
 
 
@@ -97,8 +97,8 @@ def get_project(session, user):
     :param user:
     :return:
     """
-    from utils import get_referer
-    from utils import headers
+    from xk_crawler.utils import get_referer
+    from xk_crawler.utils import headers
     import requests
     jh_headers = headers.copy()
     jh_headers['Referer'] = 'http://xk.suda.edu.cn/xs_main.aspx?xh=1627406048'
@@ -116,10 +116,4 @@ def get_project(session, user):
 
 
 if __name__ == '__main__':
-    from utils import read_config, init_session
-    user, account = read_config('./config/1628404018.ini')
-    xk_session = init_session(account, verbose=False)
-    grade_table = get_grade_table(xk_session, user, "全部", "全部")
-    pro = get_project(xk_session, user)
-    gpa = get_gpa(grade_table[1], project=pro)
-    print(gpa)
+    pass

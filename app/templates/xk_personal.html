@@ -1,0 +1,13 @@
+{%  extends "base.html" %}
+
+{% block title %}Amber's Blog{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h2>你的成绩</h2>
+</div>
+<div>
+    <h4><b>GPA: </b>{{ gpa }}</h4>
+    <a class="btn btn-primary" href="{{ url_for('crawlers.xk_csv', xh=xh) }}">下载成绩单（CSV 格式，可用 Excel 打开）</a>
+</div>
+{% endblock %}

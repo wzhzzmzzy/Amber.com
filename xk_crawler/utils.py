@@ -78,73 +78,21 @@ def headless_chrome():
 #     return tesserocr.image_to_text(img)
 
 
-def get_code(browser):
+def get_code(browser, filename):
     """
-    save screenshot and crop the captcha
-    :return:
+    在 browser 当前界面获取截图
+    :return: Pillow Image
     """
-    import os
     from PIL import Image
-    browser.save_screenshot('temp.png')
+    browser.save_screenshot(filename)
     code_ele = browser.find_element_by_id('icode')
     left = code_ele.location['x']
     top = code_ele.location['y']
     right = code_ele.location['x'] + code_ele.size['width']
     bottom = code_ele.location['y'] + code_ele.size['height']
-    os.remove('temp.png')
-    return Image.open('temp.png').crop((left, top, right, bottom))
-
-
-def build_cookie(account, verbose=True):
-    """
-    Try to Login xk.suda.edu.cn and Get Cookies
-    :return: Selenium Cookies
-    """
-    from selenium.webdriver.common.by import By
-    from selenium.common.exceptions import UnexpectedAlertPresentException
-    from selenium.webdriver.support.wait import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium import webdriver
-
-    cookie_got = False
-    browser = webdriver.Chrome() if verbose else headless_chrome()
-    wait = WebDriverWait(browser, 10)
-    browser.get(urls['index'])
-    xh_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#TextBox1')))
-    pwd_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#TextBox2')))
-    xh_input.send_keys(account['xh'])
-    pwd_input.send_keys(account['pwd'])
-    while not cookie_got:
-        try:
-            captcha_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#TextBox3')))
-            submit = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#Button1')))
-            get_code(browser).show()
-            captcha = input("请输入验证码：")
-            captcha_input.clear()
-            captcha_input.send_keys(captcha)
-            submit.click()
-            browser.page_source # 用于当验证码错误时报出异常
-            cookie_got = True
-            chrome_cookies = browser.get_cookies()
-            cookies = {}
-            for cookie in chrome_cookies:
-                cookies[cookie['name']] = cookie['value']
-            save_cookies(account['xh'], cookies)
-            return cookies
-        except UnexpectedAlertPresentException:
-            browser.switch_to.alert.accept()
-
-
-def find_cookie_from_mongo(account, db):
-    """
-    Get Cookies that hasn't expired from MongoDB
-    :return: Cookies dict-like
-    """
-
-    return db['cookies'].find_one({
-        'account': account,
-        'expires': {'$gte': wttn()}
-    })['cookies']
+    img = Image.open(filename).crop((left, top, right, bottom))
+    img.save(filename, format='PNG')
+    return img
 
 
 def save_cookies(xh, cookies):
@@ -182,25 +130,6 @@ def get_referer(user, page_flag):
     return urls[page_flag] + '?' + parse.urlencode(data)
 
 
-def read_config(filename):
-    from configparser import ConfigParser
-    conf = ConfigParser()
-    conf.read(filename)
-    user = dict(conf.items('User'))
-    account = dict(conf.items('Account'))
-    return user, account
-
-
-def init_session(account, verbose=True):
-    import requests
-    cookies = read_cookies(account['xh'])
-    if not cookies:
-        cookies = build_cookie(account, verbose)
-    session = requests.Session()
-    requests.utils.cookiejar_from_dict(cookies, session.cookies)
-    return session
-
-
 def save_to_csv(filename, header, table):
     import csv
     with open(filename, "w", encoding='utf-8-sig') as f:
@@ -209,5 +138,42 @@ def save_to_csv(filename, header, table):
         writer.writerows(table)
 
 
+def login_prepare(capt_path):
+    from bs4 import BeautifulSoup
+    browser = headless_chrome()
+    browser.get(urls['index'])
+    get_code(browser, capt_path)
+    chrome_cookies = browser.get_cookies()
+    html = browser.page_source
+    browser.close()
+    cookies = {}
+    for cookie in chrome_cookies:
+        cookies[cookie['name']] = cookie['value']
+    csrf = BeautifulSoup(html, 'lxml').find("input", type="hidden")['value']
+    return csrf, cookies
+
+
+def init_session(form):
+    import json
+    import requests
+    session = requests.Session()
+    requests.utils.cookiejar_from_dict(json.loads(form['xk_cookies']), session.cookies)
+    headers = {
+        'Host': 'xk.suda.edu.cn',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/61.0',
+        'Referer': 'http://xk.suda.edu.cn/',
+        'Content-Type': 'application/x-www-form-urlencoded',
+    }
+    data = {
+        '__VIEWSTATE': form['xk_csrf'],
+        'Button1': '',
+        'TextBox1': form['xh'],
+        'TextBox2': form['pwd'],
+        'TextBox3': form['auth']
+    }
+    res = session.post(urls['home'], headers=headers, data=data)
+    return res.text, session
+
+
 if __name__ == '__main__':
-    print(read_cookies('1627406048'))
+    pass

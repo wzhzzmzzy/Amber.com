@@ -1,0 +1,16 @@
+{%  extends "base.html" %}
+
+{% block title %}Amber's Blog{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h2> xk.suda 成绩查询 </h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            {{ wtf.quick_form(form) }}
+            <br>
+            <img src="{{ url_for('static',filename=captcha) }}">
+        </div>
+    </div>
+{% endblock %}

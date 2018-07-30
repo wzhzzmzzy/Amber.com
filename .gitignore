@@ -107,3 +107,4 @@ venv.bak/
 .ini
 .png
 cookies/
+.DS_Store

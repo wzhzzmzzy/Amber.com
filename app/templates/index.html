@@ -1,0 +1,21 @@
+{%  extends "base.html" %}
+
+{% block title %}Amber's Blog{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h2>Amber's Blog</h2>
+</div>
+<div>
+    <p>
+        现在还很空旷，只有一个
+        <a class="btn btn-default"
+           href="{{ url_for('crawlers.index', _external=True) }}"
+           role="button">
+            无聊的爬虫合集
+        </a>
+        。
+    </p>
+    <p>或者你可以去看看<a href="https://wzhzzmzzy.github.io/">我在 Github 的博客</a>？</p>
+</div>
+{% endblock %}
