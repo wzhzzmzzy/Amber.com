@@ -1,14 +1,38 @@
-from flask import render_template, request, redirect, url_for, flash, send_from_directory, current_app
+from flask import render_template, request, redirect, url_for, flash, send_from_directory, current_app, g
 from . import crawlers
 from .forms import UserForm
-from xk_crawler.utils import headless_chrome
+from proxypool.db import RedisClient
 
-browser = headless_chrome()
+
+def get_conn():
+    if not hasattr(g, 'redis'):
+        g.redis = RedisClient()
+    return g.redis
 
 
 @crawlers.route('/')
 def index():
     return render_template('crawlers.html')
+
+
+@crawlers.route('/random')
+def get_proxy():
+    """
+    Get a proxy
+    :return: 随机代理
+    """
+    conn = get_conn()
+    return conn.random()
+
+
+@crawlers.route('/count')
+def get_counts():
+    """
+    Get the count of proxies
+    :return: 代理池总量
+    """
+    conn = get_conn()
+    return str(conn.count())
 
 
 @crawlers.route('/xk', methods=['GET', 'POST'])
@@ -66,6 +90,6 @@ def xk_csv():
     return send_from_directory(os.path.join(current_app.root_path, 'grade_csv'), xh+'.csv', as_attachment=True)
 
 
-@crawlers.route('/weibo')
-def weibo_crawler():
-    return render_template('weibo.html')
+@crawlers.route('/zhihu')
+def zhihu_crawler():
+    return render_template('zhihu.html')

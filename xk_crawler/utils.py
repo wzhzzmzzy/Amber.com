@@ -139,6 +139,11 @@ def save_to_csv(filename, header, table):
 
 
 def login_prepare(capt_path):
+    """
+    获取验证码截图、当时 Cookies 以及 CSRF
+    :param capt_path: 验证码存储位置
+    :return: (csrf, cookies)
+    """
     from bs4 import BeautifulSoup
     browser = headless_chrome()
     browser.get(urls['index'])
