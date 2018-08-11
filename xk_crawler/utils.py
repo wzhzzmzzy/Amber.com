@@ -23,11 +23,11 @@ post_data = {
 }
 
 params = {
-    'kb': {'xh': "", "xm": "", 'gnmkdm':"N121603"},
-    'cj': {'xh': "", "xm": "", 'gnmkdm':"N121604"},
-    'jh': {'xh': "", "xm": "", 'gnmkdm':"N121607"},
-    'xk': {'xh': "", "xm": "", 'gnmkdm':"N121610"},
-    'ks': {'xh': "", "xm": "", 'gnmkdm':"N121615"}
+    'kb': {'xh': "", "xm": "", 'gnmkdm': "N121603"},
+    'cj': {'xh': "", "xm": "", 'gnmkdm': "N121604"},
+    'jh': {'xh': "", "xm": "", 'gnmkdm': "N121607"},
+    'xk': {'xh': "", "xm": "", 'gnmkdm': "N121610"},
+    'ks': {'xh': "", "xm": "", 'gnmkdm': "N121615"}
 }
 
 
@@ -181,4 +181,8 @@ def init_session(form):
 
 
 if __name__ == '__main__':
-    pass
+    from selenium import webdriver
+    import time
+    chrome = webdriver.Chrome()
+    time.sleep(2)
+    chrome.close()

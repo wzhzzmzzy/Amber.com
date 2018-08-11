@@ -104,12 +104,13 @@ venv.bak/
 .mypy_cache/
 
 # temp files
-.ini
-.png
+*.ini
 cookies/
+cls_table/
+grade_csv/
 .DS_Store
-.csv
 
 # PyCharm
 .idea/
 .idea/workspace.xml
+*.png

@@ -1,6 +1,7 @@
 import os
 from app import create_app
 from flask_script import Manager, Shell
+from proxypool.scheduler import Scheduler
 
 app = create_app(os.getenv('FLASK_ENV') or 'default')
 manager = Manager(app)

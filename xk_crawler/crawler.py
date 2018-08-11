@@ -11,7 +11,7 @@ def get_grade_table(session, user, year='', term='', csv_path=None):
     :param user: 学号、姓名
     :param year: 学年
     :param term: 学期
-    :param save: 是否保存到 ./grade.csv
+    :param csv_path: 如需保存，指定保存位置
     :return: (表头，表内容)
     """
     from xk_crawler.utils import get_referer, save_to_csv
@@ -99,7 +99,7 @@ def get_project(session, user):
     """
     from xk_crawler.utils import get_referer
     from xk_crawler.utils import headers
-    import requests
+
     jh_headers = headers.copy()
     jh_headers['Referer'] = 'http://xk.suda.edu.cn/xs_main.aspx?xh=1627406048'
     res = session.get(get_referer(user, 'jh'), headers=jh_headers)
@@ -113,6 +113,32 @@ def get_project(session, user):
         credit_set.append((s[0], eval(s[1])))
     credit_set.append(('通识选修课程', 10))
     return dict(credit_set)
+
+
+def get_cls_schedule(session, user, year='', term='', html_path=None):
+    from xk_crawler.utils import get_referer
+    from xk_crawler.utils import headers
+
+    kb_headers = headers.copy()
+    kb_headers['Referer'] = get_referer(user, 'kb')
+    res = session.get(kb_headers['Referer'], headers=kb_headers)
+    bsObj = BeautifulSoup(res.text, "lxml")
+
+    csrf = bsObj.find_all("input", type="hidden")[-1]['value']
+    data = {
+        '__VIEWSTATE': csrf,
+        '__EVENTARGUMENT': '',
+        '__EVENTTARGET': '',
+        'xnd': year,
+        'xqd': term
+    }
+    res = session.post(kb_headers['Referer'], headers=kb_headers, data=data)
+    bsObj = BeautifulSoup(res.text, "lxml")
+    cls_schedule = bsObj.find("table", id="Table1")
+    if html_path is not None:
+        with open(html_path, "w") as f:
+            f.write(cls_schedule.prettify())
+    return cls_schedule
 
 
 if __name__ == '__main__':

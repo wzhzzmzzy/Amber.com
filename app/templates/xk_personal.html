@@ -3,11 +3,16 @@
 {% block title %}Amber's Blog{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h2>你的成绩</h2>
-</div>
-<div>
-    <h4><b>GPA: </b>{{ gpa }}</h4>
-    <a class="btn btn-primary" href="{{ url_for('crawlers.xk_csv', xh=xh) }}">下载成绩单（CSV 格式，可用 Excel 打开）</a>
-</div>
+    <div class="page-header">
+        <h2>你想查些什么？</h2>
+    </div>
+    <div>
+        <h4><b>你的 GPA: </b>{{ gpa }}</h4>
+        <h4><b>还有你的成绩单哦：</b><a class="btn btn-primary" href="{{ url_for('crawlers.xk_csv', xh=xh) }}">下载成绩单（CSV 格式，可用 Excel 打开）</a></h4>
+    </div>
+    <br>
+    <div>
+        <h3>你需要课程表吗？</h3>
+        {{ wtf.quick_form(kb_form) }}
+    </div>
 {% endblock %}
