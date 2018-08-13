@@ -17,7 +17,7 @@ $ python3 manager.py runserver
 
 #### API 接受的表单格式
 
-```json
+```
 {
     'xh': '',   # 学号
     'pwd': '',  # 密码
@@ -31,7 +31,7 @@ $ python3 manager.py runserver
 
 #### API 返回的 JSON 格式
 
-```json
+```
 {
     'name': '',             # 姓名
     'major': '',            # 专业
