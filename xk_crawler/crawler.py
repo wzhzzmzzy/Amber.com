@@ -2,6 +2,26 @@
 xk.suda.edu.cn 数据获取
 """
 from bs4 import BeautifulSoup
+from pyquery import PyQuery as pq
+from xk_crawler.utils import headers
+
+
+def get_name(session, xh):
+    name_headers = headers.copy()
+    res = session.get("http://xk.suda.edu.cn/xs_main.aspx?xh=" + xh, headers=name_headers)
+    return pq(res.text)('#xhxm').text()[:-2]
+
+
+def get_college(session, user):
+    from xk_crawler.utils import get_referer
+
+    kb_headers = headers.copy()
+    kb_headers['Referer'] = get_referer(user, 'kb')
+    res = session.get(kb_headers['Referer'], headers=kb_headers)
+    doc = pq(res.text)
+    college = doc('#Label7').text()[3:]
+    major = doc('#Label8').text()[3:]
+    return college, major
 
 
 def get_grade_table(session, user, year='', term='', csv_path=None):
@@ -15,7 +35,6 @@ def get_grade_table(session, user, year='', term='', csv_path=None):
     :return: (表头，表内容)
     """
     from xk_crawler.utils import get_referer, save_to_csv
-    from xk_crawler.utils import headers
 
     cj_headers = headers.copy()
     cj_headers['Referer'] = get_referer(user, 'cj')
@@ -93,12 +112,11 @@ def get_gpa(grade_table, project=None):
 def get_project(session, user):
     """
     获取培养计划（学分目标）
-    :param session: 带有 Session 的对象
+    :param session:
     :param user:
     :return:
     """
     from xk_crawler.utils import get_referer
-    from xk_crawler.utils import headers
 
     jh_headers = headers.copy()
     jh_headers['Referer'] = 'http://xk.suda.edu.cn/xs_main.aspx?xh=1627406048'
@@ -116,8 +134,16 @@ def get_project(session, user):
 
 
 def get_cls_schedule(session, user, year='', term='', html_path=None):
+    """
+    获取课程表
+    :param session:
+    :param user: 有 xm 和 xh 的字典
+    :param year: 年份（2017-2018）
+    :param term: 学期
+    :param html_path: html 文档的保存位置
+    :return:
+    """
     from xk_crawler.utils import get_referer
-    from xk_crawler.utils import headers
 
     kb_headers = headers.copy()
     kb_headers['Referer'] = get_referer(user, 'kb')
@@ -138,7 +164,7 @@ def get_cls_schedule(session, user, year='', term='', html_path=None):
     if html_path is not None:
         with open(html_path, "w") as f:
             f.write(cls_schedule.prettify())
-    return cls_schedule
+    return cls_schedule.prettify()
 
 
 if __name__ == '__main__':

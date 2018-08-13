@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash, send_from_directory, current_app, g
+from flask import render_template, request, redirect, url_for, flash, send_from_directory, current_app, jsonify, g
 from . import crawlers
 from .forms import UserForm, ClassForm
 from proxypool.db import RedisClient
@@ -41,6 +41,7 @@ def xk_crawler():
     import json
     from pyquery import PyQuery
     from xk_crawler.utils import login_prepare, init_session
+    from xk_crawler.crawler import get_name
     if request.method == 'GET':
         form = UserForm()
         capt_path = str(time.time()) + '.png'
@@ -52,14 +53,16 @@ def xk_crawler():
         form_data = dict([(item[0], item[1][0]) for item in dict(request.form).items()])
         res, xk_session = init_session(form_data)
         doc = PyQuery(res)
+        print(form_data)
         if len(doc('title').text().strip()) > 8:
             flash("密码或验证码错误")
             return redirect(url_for('crawlers.xk_crawler', _external=True))
         else:
             flash("登陆成功")
+            name = get_name(xk_session, form_data['xh'])
             cookies_str = json.dumps(xk_session.cookies.get_dict())
             return redirect(url_for('crawlers.xk_crawler_personal',
-                                    name=form_data['name'], cookies=cookies_str, xh=form_data['xh'], _external=True))
+                                    name=name, cookies=cookies_str, xh=form_data['xh'], _external=True))
 
 
 @crawlers.route('/xk/personal', methods=['GET', 'POST'])
@@ -83,7 +86,6 @@ def xk_crawler_personal():
         form_data = dict([(item[0], item[1][0]) for item in dict(request.form).items()])
         tb_filename = 'app/cls_table/' + user['xh'] + '_' + form_data['year'] + '_' + form_data['term'] + '.html'
         get_cls_schedule(xk_session, user, year=form_data['year'], term=form_data['term'], html_path=tb_filename)
-        print(form_data)
         return redirect(url_for('crawlers.xk_crawler_cls_schedule',
                                 xh=user['xh'], year=form_data['year'], term=form_data['term']))
 
@@ -116,3 +118,49 @@ def xk_cls_schedule():
 @crawlers.route('/zhihu')
 def zhihu_crawler():
     return render_template('zhihu.html')
+
+
+@crawlers.route('/xk_api', methods=['GET', 'POST'])
+def xk_api_login():
+    import time
+    from pyquery import PyQuery
+    from xk_crawler.utils import login_prepare, init_session
+    from xk_crawler.crawler import get_name, get_college, get_cls_schedule
+    if request.method == 'GET':
+        capt_path = str(time.time()) + '.png'
+        xk_csrf, xk_cookies = login_prepare('app/static/' + capt_path)
+        return jsonify({
+            'auth': url_for('static', filename=capt_path),
+            '_csrf': xk_csrf,
+            '_cookies': xk_cookies
+        })
+    if request.method == 'POST':
+
+        form_data = {
+            'xh': request.form['xh'],
+            'pwd': request.form['pwd'],
+            'auth': request.form['auth'],
+            'xk_csrf': request.form['_csrf'],
+            'xk_cookies': request.form['_cookies'],
+            'year': request.form['year'],
+            'term': request.form['term']
+        }
+        print(form_data)
+        res, xk_session = init_session(form_data)
+        doc = PyQuery(res)
+        if len(doc('title').text().strip()) > 8:
+            return jsonify({'error': '密码或验证码错误'})
+        else:
+            user = {
+                'xm': get_name(xk_session, form_data['xh']),
+                'xh': form_data['xh']
+            }
+            detail = get_college(xk_session, user)
+            cls_schedule = get_cls_schedule(xk_session, user, form_data['year'], form_data['term'])
+            return jsonify({
+                'name': user['xm'],
+                'major': detail[1],
+                'college': detail[0],
+                'class_schedule': cls_schedule
+            })
+
