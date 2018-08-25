@@ -8,9 +8,19 @@ urls = {
     'ks': "http://xk.suda.edu.cn/xskscx.aspx"           # 考试时间
 }
 
+urls_tao = {
+    'index': "http://xk.liontao.xin/",                  # 首页
+    'home': "http://xk.liontao.xin/default_szdx.aspx",  # 用户首页
+    'kb': "http://xk.liontao.xin/xskbcx.aspx",          # 课表
+    'cj': "http://xk.liontao.xin/xscjcx_dq.aspx",       # 成绩
+    'jh': "http://xk.liontao.xin/pyjh.aspx",            # 培养计划（每年推荐选课）
+    'xk': "http://xk.liontao.xin/xsxkqk.aspx",          # 选课情况
+    'ks': "http://xk.liontao.xin/xskscx.aspx"           # 考试时间
+}
+
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/61.0',
-    'Host': "xk.suda.edu.cn"
+    'Host': "xk.liontao.xin"
 }
 
 post_data = {
@@ -54,28 +64,6 @@ def headless_chrome():
     chrome_opt.add_argument('--headless')
     chrome_opt.add_argument('--disable-gpu')
     return webdriver.Chrome(chrome_options=chrome_opt)
-
-
-# def process_captcha(img):
-#     """
-#     Read Image Captcha With Tesseract-OCR
-#     :param img: Pillow Image
-#     :return: Captcha String
-#     """
-#     try:
-#         import tesserocr
-#         from PIL import Image
-#     except ImportError:
-#         print("This method needs Tesserocr & PIL")
-#         return
-#     # img = img.convert('L')
-#     threshold = 150
-#     img_table = []
-#     for i in range(256):
-#         img_table.append(0 if i < threshold else 1)
-#     img = img.point(img_table, '1')
-#     img.show()
-#     return tesserocr.image_to_text(img)
 
 
 def get_code(browser, filename):
@@ -127,7 +115,7 @@ def get_referer(user, page_flag):
     data = params[page_flag].copy()
     data['xh'] = user['xh']
     data['xm'] = user['xm']
-    return urls[page_flag] + '?' + parse.urlencode(data)
+    return urls_tao[page_flag] + '?' + parse.urlencode(data)
 
 
 def save_to_csv(filename, header, table):
@@ -146,7 +134,7 @@ def login_prepare(capt_path):
     """
     from bs4 import BeautifulSoup
     browser = headless_chrome()
-    browser.get(urls['index'])
+    browser.get(urls_tao['index'])
     get_code(browser, capt_path)
     chrome_cookies = browser.get_cookies()
     html = browser.page_source
@@ -164,9 +152,9 @@ def init_session(form):
     session = requests.Session()
     requests.utils.cookiejar_from_dict(json.loads(form['xk_cookies']), session.cookies)
     headers = {
-        'Host': 'xk.suda.edu.cn',
+        'Host': 'xk.liontao.xin',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/61.0',
-        'Referer': 'http://xk.suda.edu.cn/',
+        'Referer': 'http://xk.liontao.xin/',
         'Content-Type': 'application/x-www-form-urlencoded',
     }
     data = {
@@ -176,13 +164,23 @@ def init_session(form):
         'TextBox2': form['pwd'],
         'TextBox3': form['auth']
     }
-    res = session.post(urls['home'], headers=headers, data=data)
+    res = session.post(urls_tao['home'], headers=headers, data=data)
     return res.text, session
 
 
+def login_prepare_splash(capt_path):
+    from urllib.parse import quote
+    import requests
+    import base64
+    with open('xk_crawler/login_prepare.lua') as lua_f:
+        lua_source = lua_f.read()
+    url = 'http://wzhzzmzzy.xyz:8888/execute?lua_source=' + quote(lua_source)
+    res = requests.get(url).json()
+    with open(capt_path, 'wb') as capt_f:
+        capt_f.write(base64.b64decode(res['icode']))
+    cookies = dict(((i['name'], i['value']) for i in res['cookies']))
+    return res['csrf'], cookies
+
+
 if __name__ == '__main__':
-    from selenium import webdriver
-    import time
-    chrome = webdriver.Chrome()
-    time.sleep(2)
-    chrome.close()
+    login_prepare_splash('app/static/test.png')

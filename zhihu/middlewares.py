@@ -69,10 +69,10 @@ class ZhihuDownloaderMiddleware(object):
         return s
 
     def process_request(self, request, spider):
-        import requests
-        proxy_api = 'http://118.25.193.162:12980/crawlers/random'
-        proxy_addr = 'http://' + requests.get(proxy_api).text
-        request.meta['proxy'] = proxy_addr
+        # import requests
+        # proxy_api = 'http://118.25.193.162:12980/crawlers/random'
+        # proxy_addr = 'http://' + requests.get(proxy_api).text
+        # request.meta['proxy'] = proxy_addr
         return request
 
     def process_response(self, request, response, spider):

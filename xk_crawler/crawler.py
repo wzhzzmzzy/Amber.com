@@ -1,5 +1,5 @@
 """
-xk.suda.edu.cn 数据获取
+xk.liontao.xin 数据获取
 """
 from bs4 import BeautifulSoup
 from pyquery import PyQuery as pq
@@ -8,7 +8,7 @@ from xk_crawler.utils import headers
 
 def get_name(session, xh):
     name_headers = headers.copy()
-    res = session.get("http://xk.suda.edu.cn/xs_main.aspx?xh=" + xh, headers=name_headers)
+    res = session.get("http://xk.liontao.xin/xs_main.aspx?xh=" + xh, headers=name_headers)
     return pq(res.text)('#xhxm').text()[:-2]
 
 
@@ -93,15 +93,19 @@ def get_gpa(grade_table, project=None):
     for item in grade_set.items():
         cata_name = item[0]
         courses = sorted([i[1] for i in item[1].items()], key=lambda d: d['score'], reverse=True)
-        part_credit_pro = project.get(cata_name, 100)
+        if project is not None:
+            part_credit_pro = project.get(cata_name, 100)
         part_credit_cnt = 0.0
         part_score_cnt = 0.0
         for course in courses:
             part_credit_cnt += course['credit']
-            if part_credit_cnt > part_credit_pro:
-                credit_temp = course['credit'] - (part_credit_cnt - part_credit_pro)
-                part_score_cnt += credit_temp * course['score']
-                part_credit_cnt = part_credit_pro
+            if project is not None:
+                if part_credit_cnt > part_credit_pro:
+                    credit_temp = course['credit'] - (part_credit_cnt - part_credit_pro)
+                    part_score_cnt += credit_temp * course['score']
+                    part_credit_cnt = part_credit_pro
+                else:
+                    part_score_cnt += course['credit'] * course['score']
             else:
                 part_score_cnt += course['credit'] * course['score']
         credit_cnt += part_credit_cnt
@@ -119,7 +123,7 @@ def get_project(session, user):
     from xk_crawler.utils import get_referer
 
     jh_headers = headers.copy()
-    jh_headers['Referer'] = 'http://xk.suda.edu.cn/xs_main.aspx?xh=1627406048'
+    jh_headers['Referer'] = 'http://xk.liontao.xin/xs_main.aspx?xh=1627406048'
     res = session.get(get_referer(user, 'jh'), headers=jh_headers)
     bsObj = BeautifulSoup(res.text, "lxml")
     credit = [i.find_all("td") for i in bsObj.find("table", id="DataGrid4").find_all("tr")]
@@ -168,4 +172,10 @@ def get_cls_schedule(session, user, year='', term='', html_path=None):
 
 
 if __name__ == '__main__':
-    pass
+    import csv
+    with open('../app/grade_csv/1627405062.csv', 'r', encoding='utf8') as f:
+        reader = csv.reader(f)
+        table_header = next(reader)
+        table = [i for i in reader][1::2]
+        res = get_gpa(table)
+        print(res)

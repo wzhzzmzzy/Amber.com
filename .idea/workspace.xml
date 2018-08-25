@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7af3ff7-2585-4a72-a1cf-ddfc338aa554" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crawlers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crawlers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xk_crawler/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/xk_crawler/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xk_crawler/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/xk_crawler/crawler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xk_crawler/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/xk_crawler/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zhihu/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/zhihu/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zhihu/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/zhihu/middlewares.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zhihu/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/zhihu/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zhihu/spiders/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/zhihu/spiders/followers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +28,10 @@
     <SUITE FILE_PATH="coverage/crawl_xk_suda$utils.coverage" NAME="utils Coverage Results" MODIFIED="1532652411545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
     <SUITE FILE_PATH="coverage/Amber_com$test.coverage" NAME="test Coverage Results" MODIFIED="1534161520302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/crawl_xk_suda$main.coverage" NAME="main Coverage Results" MODIFIED="1532581015619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Amber_com$utils.coverage" NAME="utils Coverage Results" MODIFIED="1533978081559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Amber_com$Amber_com.coverage" NAME="Amber.com Coverage Results" MODIFIED="1534161262706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Amber_com$crawler.coverage" NAME="crawler Coverage Results" MODIFIED="1534244126971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/xk_crawler" />
+    <SUITE FILE_PATH="coverage/Amber_com$utils.coverage" NAME="utils Coverage Results" MODIFIED="1535199749962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Amber_com$Amber_com.coverage" NAME="Amber.com Coverage Results" MODIFIED="1535200300656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Amber_com$user.coverage" NAME="user Coverage Results" MODIFIED="1534424523543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhihu/spiders" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1552996256">
@@ -75,23 +86,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="368">
-                <caret line="29" column="3" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="followers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhihu/spiders/followers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1407">
+              <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhihu/spiders/activity.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crawlers/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="163" column="31" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="31" />
+            <state relative-caret-position="170">
+              <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="httpbin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhihu/spiders/httpbin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhihu/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1176">
+              <caret line="56" column="3" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhihu/middlewares.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+              <folding>
+                <element signature="e#239#1901#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,10 +166,23 @@
       <find>fi</find>
       <find>xk_crawler_personal</find>
       <find>.idea</find>
+      <find>DOWNLOAD_DELAY</find>
+      <find>Physics</find>
+      <find>xk.</find>
+      <find>http://xk.suda.edu.cn/</find>
+      <find>urls</find>
+      <find>xk.suda.edu.cn</find>
+      <find>http://</find>
+      <find>/xk.liontao.xin</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>.utils</replace>
       <replace>util</replace>
+      <replace>http://xk.liontao.xin/</replace>
+      <replace>urls_tao</replace>
+      <replace>/xk.liontao.xin</replace>
+      <replace>xk.liontao.xin</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -125,10 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/crawler/crawler.py" />
-        <option value="$PROJECT_DIR$/templates/404.html" />
-        <option value="$PROJECT_DIR$/templates/xk.html" />
-        <option value="$PROJECT_DIR$/templates/crawler.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/crawler/utils.py" />
@@ -144,7 +206,6 @@
         <option value="$PROJECT_DIR$/app/templates/index.html" />
         <option value="$PROJECT_DIR$/app/templates/weibo.html" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/xk_crawler/README.md" />
         <option value="$PROJECT_DIR$/xk_crawler/get_captcha.lua" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/items.py" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/spiders/quotes.py" />
@@ -164,18 +225,23 @@
         <option value="$PROJECT_DIR$/zhihu/zhihu/spiders/user.py" />
         <option value="$PROJECT_DIR$/zhihu/zhihu/items.py" />
         <option value="$PROJECT_DIR$/zhihu/zhihu/settings.py" />
-        <option value="$PROJECT_DIR$/zhihu/items.py" />
-        <option value="$PROJECT_DIR$/zhihu/middlewares.py" />
-        <option value="$PROJECT_DIR$/zhihu/settings.py" />
-        <option value="$PROJECT_DIR$/zhihu/spiders/user.py" />
         <option value="$PROJECT_DIR$/app/crawlers/forms.py" />
         <option value="$PROJECT_DIR$/app/templates/xk_api_login.html" />
-        <option value="$PROJECT_DIR$/xk_crawler/utils.py" />
-        <option value="$PROJECT_DIR$/app/crawlers/views.py" />
-        <option value="$PROJECT_DIR$/xk_crawler/crawler.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/get_cls_schedule.py" />
+        <option value="$PROJECT_DIR$/app/grade_csv/1627405062.csv" />
+        <option value="$PROJECT_DIR$/xk_crawler/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/zhihu/items.py" />
+        <option value="$PROJECT_DIR$/zhihu/spiders/httpbin.py" />
+        <option value="$PROJECT_DIR$/zhihu/settings.py" />
+        <option value="$PROJECT_DIR$/zhihu/middlewares.py" />
+        <option value="$PROJECT_DIR$/zhihu/spiders/user.py" />
+        <option value="$PROJECT_DIR$/zhihu/spiders/followers.py" />
+        <option value="$PROJECT_DIR$/zhihu/spiders/activity.py" />
+        <option value="$PROJECT_DIR$/xk_crawler/crawler.py" />
+        <option value="$PROJECT_DIR$/xk_crawler/utils.py" />
+        <option value="$PROJECT_DIR$/app/crawlers/views.py" />
       </list>
     </option>
   </component>
@@ -217,6 +283,11 @@
               <item name="Amber.com" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="crawlers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Amber.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Amber.com" type="462c0819:PsiDirectoryNode" />
+              <item name="xk_crawler" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -264,8 +335,27 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Flask server.Amber.com">
     <configuration name="crawlers.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/crawl.xk.suda/templates/crawlers.html" />
+    <configuration name="crawler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Amber.com" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xk_crawler" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xk_crawler/crawler.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Amber.com" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,6 +370,25 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="user" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Amber.com" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zhihu/spiders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\Amber\Projects\Amber.com\zhihu\spiders\followers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -326,11 +435,15 @@
       <item itemvalue="JavaScript Debug.crawlers.html" />
       <item itemvalue="Python.utils" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.crawler" />
+      <item itemvalue="Python.user" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.utils" />
+        <item itemvalue="Python.user" />
+        <item itemvalue="Python.crawler" />
+        <item itemvalue="Python.test" />
         <item itemvalue="JavaScript Debug.crawlers.html" />
       </list>
     </recent_temporary>
@@ -361,17 +474,16 @@
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32810867" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32810867" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32706374" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.34378266" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49939394" visible="true" weight="0.15766263" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.384535" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.34273773" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49939394" visible="true" weight="0.17254686" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32810867" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50060606" side_tool="true" weight="0.24050634" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -383,6 +495,7 @@
       <window_info anchor="right" id="LuaJ" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32810867" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,26 +505,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/PycharmProjects/spdier_t/venv/lib/python3.7/site-packages/wtforms/widgets/core.py" />
-    <entry file="file://$USER_HOME$/PycharmProjects/spdier_t/venv/lib/python3.7/site-packages/wtforms/fields/core.py" />
-    <entry file="file://$USER_HOME$/PycharmProjects/spdier_t/venv/lib/python3.7/site-packages/wtforms/fields/simple.py" />
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="20" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/spdier_t/venv/lib/python3.7/site-packages/flask/helpers.py" />
-    <entry file="file://$PROJECT_DIR$/grade.csv" />
-    <entry file="file://$PROJECT_DIR$/test.png" />
     <entry file="file://$PROJECT_DIR$/xk_crawler/get_captcha.lua" />
     <entry file="file://$USER_HOME$/PycharmProjects/spdier_t/venv/bin/scrapy" />
     <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/quotes.py" />
@@ -431,20 +524,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py" />
-    <entry file="file://$PROJECT_DIR$/proxypool/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/wtforms/fields/core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -471,13 +550,6 @@
         <state relative-caret-position="-567" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proxypool/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proxypool/getter.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -488,19 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xk_crawler/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -563,20 +622,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhihu/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pyquery/pyquery.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-54">
           <caret line="182" column="8" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
-          <folding>
-            <element signature="e#5177#8407#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,23 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhihu/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhihu/spiders/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/123229622/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -618,26 +650,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xk_crawler/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1302">
-          <caret line="166" column="33" lean-forward="true" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.png" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/app/crawlers/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -645,59 +659,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/xk_api_login.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/xk_api_login.html" />
+    <entry file="file://$PROJECT_DIR$/get_cls_schedule.py" />
+    <entry file="file://$PROJECT_DIR$/app/grade_csv/1627405062.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        <state relative-caret-position="546">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhihu/middlewares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="e#239#1901#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xk_crawler/crawler.py">
+    <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="156" column="28" lean-forward="true" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
-          <folding>
-            <element signature="e#28#57#0" expanded="true" />
-            <element signature="e#1267#3056#0" />
-            <element signature="e#3095#3851#0" />
-          </folding>
+          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crawlers/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="163" column="31" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="31" />
+    <entry file="file://$PROJECT_DIR$/xk_crawler/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="380">
+            <caret line="54" column="12" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_cls_schedule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="368">
-            <caret line="29" column="3" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+          <first_editor relative-caret-position="252">
+            <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/scrapy/http/request/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1176">
+          <caret line="56" column="3" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding>
+            <element signature="e#239#1901#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proxypool/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="66" column="59" lean-forward="true" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proxypool/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/spiders/followers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1407">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/spiders/activity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="125" column="29" lean-forward="true" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/1534161341.6492887.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/test.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhihu/spiders/httpbin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xk_crawler/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+          <folding>
+            <element signature="e#615#831#0" />
+            <element signature="e#842#1109#0" />
+            <element signature="e#1128#1307#0" />
+            <element signature="e#1128#1190#1" />
+            <element signature="e#1337#1686#0" />
+            <element signature="e#1337#1423#1" />
+            <element signature="e#2299#2359#1" />
+            <element signature="e#2817#2950#0" />
+            <element signature="e#2979#3561#0" />
+            <element signature="e#3825#3987#0" />
+            <element signature="e#3901#3987#0" />
+            <element signature="e#4024#4125#1" />
+            <marker date="1535200506246" expanded="true" signature="5251:5692" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xk_crawler/crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="180" column="13" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="13" />
+          <folding>
+            <element signature="e#28#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crawlers/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
         </state>
       </provider>
     </entry>

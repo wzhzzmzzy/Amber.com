@@ -40,12 +40,12 @@ def xk_crawler():
     import time
     import json
     from pyquery import PyQuery
-    from xk_crawler.utils import login_prepare, init_session
+    from xk_crawler.utils import login_prepare_splash, init_session
     from xk_crawler.crawler import get_name
     if request.method == 'GET':
         form = UserForm()
         capt_path = str(time.time()) + '.png'
-        xk_csrf, xk_cookies = login_prepare('app/static/' + capt_path)
+        xk_csrf, xk_cookies = login_prepare_splash('app/static/' + capt_path)
         form.xk_csrf.data = xk_csrf
         form.xk_cookies.data = json.dumps(xk_cookies)
         return render_template('xk.html', form=form, captcha=capt_path)
@@ -53,7 +53,6 @@ def xk_crawler():
         form_data = dict([(item[0], item[1][0]) for item in dict(request.form).items()])
         res, xk_session = init_session(form_data)
         doc = PyQuery(res)
-        print(form_data)
         if len(doc('title').text().strip()) > 8:
             flash("密码或验证码错误")
             return redirect(url_for('crawlers.xk_crawler', _external=True))
