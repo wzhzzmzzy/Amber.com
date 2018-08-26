@@ -24,13 +24,13 @@ def get_college(session, user):
     return college, major
 
 
-def get_grade_table(session, user, year='', term='', csv_path=None):
+def get_grade_table(session, user, year='%C8%AB%B2%BF', term='%C8%AB%B2%BF', csv_path=None):
     """
     获取成绩单
     :param session: 带有 Cookie 的 Session 对象
     :param user: 学号、姓名
-    :param year: 学年
-    :param term: 学期
+    :param year: 学年（默认为全部）
+    :param term: 学期（默认为全部）
     :param csv_path: 如需保存，指定保存位置
     :return: (表头，表内容)
     """
@@ -48,10 +48,10 @@ def get_grade_table(session, user, year='', term='', csv_path=None):
         '__EVENTTARGET': '',
         'ddlxn': year,
         'ddlxq': term,
-        'btnCx': ' 查  询 '
+        'btnCx': '+%B2%E9++%D1%AF+'  # 查 询
     }
     res = session.post(cj_headers['Referer'], headers=cj_headers, data=data)
-    bsObj = BeautifulSoup(res.text, "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
     grade = bsObj.find("table", class_="datelist").find_all("tr")
     table = [[i.text for i in item.find_all("td")] for item in grade]
     if csv_path is not None:
@@ -125,7 +125,7 @@ def get_project(session, user):
     jh_headers = headers.copy()
     jh_headers['Referer'] = 'http://xk.liontao.xin/xs_main.aspx?xh=1627406048'
     res = session.get(get_referer(user, 'jh'), headers=jh_headers)
-    bsObj = BeautifulSoup(res.text, "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
     credit = [i.find_all("td") for i in bsObj.find("table", id="DataGrid4").find_all("tr")]
     credit_set = []
     for item in range(1, len(credit)):
@@ -163,7 +163,7 @@ def get_cls_schedule(session, user, year='', term='', html_path=None):
         'xqd': term
     }
     res = session.post(kb_headers['Referer'], headers=kb_headers, data=data)
-    bsObj = BeautifulSoup(res.text, "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
     cls_schedule = bsObj.find("table", id="Table1")
     if html_path is not None:
         with open(html_path, "w") as f:

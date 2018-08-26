@@ -115,7 +115,7 @@ def get_referer(user, page_flag):
     data = params[page_flag].copy()
     data['xh'] = user['xh']
     data['xm'] = user['xm']
-    return urls_tao[page_flag] + '?' + parse.urlencode(data)
+    return urls_tao[page_flag] + '?' + parse.urlencode(data, encoding='gbk')
 
 
 def save_to_csv(filename, header, table):

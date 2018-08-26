@@ -77,7 +77,7 @@ def xk_crawler_personal():
     requests.utils.cookiejar_from_dict(json.loads(request.args.get('cookies')), xk_session.cookies)
     if request.method == 'GET':
         kb_form = ClassForm()
-        table_header, table = get_grade_table(xk_session, user, "全部", "全部", csv_path='app/grade_csv/' + user['xh'] + '.csv')
+        table_header, table = get_grade_table(xk_session, user, csv_path='app/grade_csv/' + user['xh'] + '.csv')
         project = get_project(xk_session, user)
         gpa = get_gpa(table, project)
         return render_template('xk_personal.html', xh=user['xh'], gpa=gpa, kb_form=kb_form)
