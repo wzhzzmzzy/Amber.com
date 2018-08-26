@@ -152,7 +152,7 @@ def get_cls_schedule(session, user, year='', term='', html_path=None):
     kb_headers = headers.copy()
     kb_headers['Referer'] = get_referer(user, 'kb')
     res = session.get(kb_headers['Referer'], headers=kb_headers)
-    bsObj = BeautifulSoup(res.text, "lxml")
+    bsObj = BeautifulSoup(res.text, "html.parser")
 
     csrf = bsObj.find_all("input", type="hidden")[-1]['value']
     data = {
@@ -163,7 +163,7 @@ def get_cls_schedule(session, user, year='', term='', html_path=None):
         'xqd': term
     }
     res = session.post(kb_headers['Referer'], headers=kb_headers, data=data)
-    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "html.parser")
     cls_schedule = bsObj.find("table", id="Table1")
     if html_path is not None:
         with open(html_path, "w") as f:
