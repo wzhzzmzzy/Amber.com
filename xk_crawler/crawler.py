@@ -39,7 +39,7 @@ def get_grade_table(session, user, year='%C8%AB%B2%BF', term='%C8%AB%B2%BF', csv
     cj_headers = headers.copy()
     cj_headers['Referer'] = get_referer(user, 'cj')
     res = session.get(cj_headers['Referer'], headers=cj_headers)
-    bsObj = BeautifulSoup(res.text, "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "html.parser")
 
     csrf = bsObj.find_all("input", type="hidden")[-1]['value']
     data = {
@@ -51,7 +51,7 @@ def get_grade_table(session, user, year='%C8%AB%B2%BF', term='%C8%AB%B2%BF', csv
         'btnCx': '+%B2%E9++%D1%AF+'  # 查 询
     }
     res = session.post(cj_headers['Referer'], headers=cj_headers, data=data)
-    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "html.parser")
     grade = bsObj.find("table", class_="datelist").find_all("tr")
     table = [[i.text for i in item.find_all("td")] for item in grade]
     if csv_path is not None:
@@ -125,7 +125,7 @@ def get_project(session, user):
     jh_headers = headers.copy()
     jh_headers['Referer'] = 'http://xk.liontao.xin/xs_main.aspx?xh=1627406048'
     res = session.get(get_referer(user, 'jh'), headers=jh_headers)
-    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "lxml")
+    bsObj = BeautifulSoup(res.content.decode('gbk', "ignore"), "html.parser")
     credit = [i.find_all("td") for i in bsObj.find("table", id="DataGrid4").find_all("tr")]
     credit_set = []
     for item in range(1, len(credit)):
